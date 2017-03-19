@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>yess</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        
+        <link href="style.css" rel="stylesheet">
+        <script type="text/javascript" src="jquery.min.js"></script>  
+
+            <script type="text/javascript">
+                
+            jQuery(function($){
+                    $('.map').append("<div class='overlay'>").append('<div class="tooltip"></div>');
+                    $('.map .tooltip').hide();
+
+                    $(document).mousemove(function(e){
+                        $('.map .tooltip').css({
+                            top:e.pageY-$('.map .tooltip').height()-20,
+                            left:e.pageX-$('.mpa .tooltip').width()/2 -10 
+                        });
+
+                    });
+
+                     var regions = [
+                        {name :"Extreme-nord", ville:"Maroua"},
+                        {name :"Nord", ville:"Garoua"},
+                        {name :"Adamaoua", ville:"Ngaoundéré"},
+                        {name :"Est", ville:"Bertoua"},
+                        {name :"Centre", ville:"Yaoundé"},
+                        {name :"Sud", ville:"Ebolowa"},
+                        {name :"Littoral", ville:"Douala"},
+                        {name :"Ouest", ville:"Bafoussam"},
+                        {name :"Nord-Ouest", ville:"Bamenda"},
+                        {name :"Sud-Ouest", ville:"Buéa"}
+                        
+                     ];
+
+                    $('.map area').mouseover(function(){
+                        var index = $(this).index();
+						var left = -index *340 -340;
+                        $('.map .tooltip').html(regions[index].name).stop().fadeTo(500, 0.6)
+                        
+						$('.map .overlay').css({
+							backgroundPosition: left+"px 0px"
+						});
+						
+                    });
+
+                    $('.map').mouseout(function(){
+                        $('.map .overlay').css({
+                            backgroundPosition: "340px 0px"
+                        });
+                        $('.map .tooltip').stop().fadeTo(500,0);
+                    });
+            }); 
+
+
+            </script>
+
+    </head>
+    <body>
+        <div class="map">
+            <img src="void.png" width="340" height="380" usemap="#Map" border="0" >
+            <map name="Map">           
+                <area shape="poly" coords="246,13,279,40,282,70,287,91,295,108,261,106,237,102,225,103,221,104,229,83,241,74,255,68,261,64,266,58,267,47,255,35,253,34,255,12,249,27,268,23" href="#">
+                <area shape="poly" coords="216,106,169,164,186,178,218,181,257,195,282,195,305,184,290,160,241,109" href="#">
+                <area shape="poly" coords="165,171,125,221,138,233,183,234,218,234,245,234,263,227,276,213,283,201" href="#">
+                <area shape="poly" coords="197,239,262,239,271,272,290,303,311,324,311,327,326,350,323,363,288,357,263,353,229,353,209,322,194,321,187,322,180,308,196,278,204,274,196,255" href="#">
+                <area shape="poly" coords="127,238,188,238,190,254,196,273,187,284,182,297,168,305,157,313,140,317,122,318,106,312,86,313,86,303,115,290,109,277,92,276,92,272,112,266" href="#">
+                <area shape="poly" coords="66,348,72,318,88,316,103,318,105,320,128,326,139,321,161,319,177,316,188,330,201,335,215,342,228,351" href="#">
+                <area shape="poly" coords="67,315,59,298,57,284,62,268,64,260,81,267,91,269,91,281,107,281,115,288" href="#">
+                <area shape="poly" coords="69,255,97,264,116,259,122,245,123,230,111,231,96,235,77,245,66,249" href="#">
+                <area shape="poly" coords="58,234,92,238,111,228,111,212,101,205,84,206,71,211,60,212" href="#">
+                <area shape="poly" coords="12,280,24,250,45,225,58,225,59,243,62,261,57,274,48,290,36,295" href="#">
+           </map>
+    </div>
+</body>
+</html>
